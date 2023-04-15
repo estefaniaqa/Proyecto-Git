@@ -1,0 +1,122 @@
+Clase Cuenta
+
+package Entidad;
+
+import java.util.Scanner;
+/**
+ *
+ * @author dario
+ */
+public class Cuenta {
+    private double saldo;
+    private String titular;
+    
+    
+    //Constructores
+    
+    public Cuenta() {
+    }
+
+    public Cuenta(double saldo, String titular) {
+        this.saldo = saldo;
+        this.titular = titular;
+        
+    }
+    
+    // setters y getters
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public String getTitular() {
+        return titular;
+    }
+
+    public void setTitular(String titular) {
+        this.titular = titular;
+    }
+
+    
+
+   // Metodos
+    
+    public void retirarDinero(){
+        Scanner leer = new Scanner(System.in); 
+
+        double dineroARetirar;
+        System.out.println("Ud dispone de: " + this.saldo);
+        System.out.println("¿Cuanto dinero desea retirar?");
+        dineroARetirar= leer.nextDouble();
+        leer.nextLine();
+        if (dineroARetirar<=this.saldo){
+            this.saldo -=dineroARetirar;
+            System.out.println("La operación se realizó exitosamente, su nuevo saldo es: " + this.saldo);
+        } else {
+            System.out.println("Usted no dispone de saldo suficiente para la operacón que desea realizar");
+        }    
+    }
+    public boolean verificacionDeUsuario(String usuario){
+        return usuario.equals(this.titular);
+        
+    }
+    public void inicializaCuenta(double saldo, String titular) {
+        this.saldo = saldo;
+        this.titular = titular;
+    }
+    
+}
+
+Main
+
+
+/*
+Crea una clase "Cuenta" que tenga atributos como "saldo" y "titular". Luego, 
+crea un método "retirar_dinero" que permita retirar una cantidad de dinero del 
+saldo de la cuenta. Asegúrate de que el saldo nunca sea negativo después de 
+realizar una transacción de retiro.
+
+ */
+package guia7extra4;
+
+import Entidad.Cuenta;
+import java.util.Scanner;
+
+/**
+ *
+ * @author dario
+ */
+public class Guia7Extra4 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+    Scanner leer = new Scanner(System.in);    
+    Cuenta cuenta1 = new Cuenta();
+    String titular;
+    double saldo;
+    String salir;
+    System.out.println("Ingrese el titular de la cuenta");
+    titular = leer.nextLine();
+    System.out.println("Ingrese el saldo de la cuenta");
+    saldo = leer.nextDouble();
+    leer.nextLine();
+    cuenta1.inicializaCuenta(saldo, titular);
+   
+    do{        
+        cuenta1.retirarDinero();
+        System.out.println("Desea realizar otro retiro (s/n)");
+        
+        salir=leer.nextLine();
+        salir=salir.toLowerCase();
+    } while ("s".equals(salir));
+        
+        
+    }
+    
+}

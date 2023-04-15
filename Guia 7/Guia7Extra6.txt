@@ -1,0 +1,91 @@
+MAIN
+
+/*
+Crea una clase "Rectángulo" que tenga atributos "lado1" y "lado2" y un método "
+calcular_area" que calcule y devuelva el área del rectángulo. Luego crea un 
+objeto "rectangulo1" de la clase "Rectángulo" con lados de 4 y 6 y imprime el 
+área del rectángulo.
+
+ */
+package guia7extra6;
+
+import Entidad.Rectangulo;
+import java.util.Scanner;
+
+/**
+ *
+ * @author dario
+ */
+public class Guia7Extra6 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+    Scanner leer = new Scanner(System.in);    
+    
+    int lado1;
+    int lado2;
+    System.out.println("Ingrese el lado 1: ");
+    lado1 = leer.nextInt();
+    System.out.println("Ingrese el lado 2: ");
+    lado2 = leer.nextInt();
+    Rectangulo rectangulo1 = new Rectangulo(lado1, lado2);
+    rectangulo1.calcularArea();
+    }
+    
+}
+
+CLASE
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Entidad;
+
+/**
+ *
+ * @author dario
+ */
+public class Rectangulo {
+   // Atributos
+    
+    private int lado1; 
+    private int lado2;
+   // Constructores
+
+    public Rectangulo() {
+    }
+
+    public Rectangulo(int lado1, int lado2) {
+        this.lado1 = lado1;
+        this.lado2 = lado2;
+    }
+    
+    // setters y getters
+
+    public int getLado1() {
+        return lado1;
+    }
+
+    public void setLado1(int lado1) {
+        this.lado1 = lado1;
+    }
+
+    public int getLado2() {
+        return lado2;
+    }
+
+    public void setLado2(int lado2) {
+        this.lado2 = lado2;
+    }
+    public void calcularArea(){
+        int area = lado1 * lado2;
+        System.out.println("El Area del rectángulo es: " + area);
+    }
+    public void inicializarRectangulo(int lado1, int lado2){
+        this.lado1 = lado1;
+        this.lado2 = lado2;
+    }
+}
